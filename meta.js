@@ -3,24 +3,24 @@ module.exports = {
         project: {
             type: 'string',
             required: true,
-            message: 'Pretty Project name'
+            message: 'Pretty Project name',
         },
         preprocessor: {
             type: 'list',
             message: 'Choose a css preprocessor',
             choices: [
                 'stylus',
-                'scss'
-            ]
+                'scss',
+            ],
         },
         eslint: {
             type: 'confirm',
-            message: 'Use ESLint?'
+            message: 'Use ESLint?',
         },
         apollo: {
             type: 'confirm',
-            message: 'Include Vue Apollo and Graphql?'
-        }
+            message: 'Include Vue Apollo and Graphql?',
+        },
     },
     filters: {
         'client/assets/stylus/**/*': 'preprocessor === "stylus"',
@@ -29,16 +29,15 @@ module.exports = {
         'client/apollo/**/*': 'apollo === true',
         'server/api.js': 'apollo === true',
         'server/graphql/**/*': 'apollo === true',
-        '.eslintrc.js': 'eslint === true'
+        '.eslintrc.js': 'eslint === true',
     },
     helpers: {
-        htmlTitle: ()=> '{{title}}',
-        htmlResourceHints: ()=> '{{{ renderResourceHints() }}}',
-        htmlStyles: ()=> '{{{ renderStyles() }}}',
-        htmlApollo: ()=> '<script>{{{ apollo }}}</script>',
-        htmlState: ()=> '{{{ renderState() }}}',
-        htmlScripts: ()=> '{{{ renderScripts() }}}',
-        year: ()=> new Date().getFullYear(),
+        htmlResourceHints: () => '{{{ renderResourceHints() }}}',
+        htmlStyles: () => '{{{ renderStyles() }}}',
+        htmlApollo: () => '<script>{{{ apollo }}}</script>',
+        htmlState: () => '{{{ renderState() }}}',
+        htmlScripts: () => '{{{ renderScripts() }}}',
+        year: () => new Date().getFullYear(),
         preprocessorExtension({ data }) {
             let ret
             switch (data.root.preprocessor) {
@@ -52,11 +51,11 @@ module.exports = {
                 break
             }
             return ret
-        }
+        },
     },
     skipInterpolation: [
         'client/pages/Test.vue',
-        'client/pages/Apollo.vue'
+        'client/pages/Apollo.vue',
     ],
     completeMessage: `To get started:
 
@@ -64,5 +63,5 @@ module.exports = {
       - or -
 {{#inPlace}}yarn && npm run dev{{else}}cd {{destDirName}} && yarn && npm run dev{{/inPlace}}
 
-More info in the README`
+More info in the README`,
 }

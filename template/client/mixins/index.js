@@ -1,5 +1,5 @@
-import titleMixin from './title'
+import metaMixin from './meta'
 
 export {
-    titleMixin
+    metaMixin
 }
